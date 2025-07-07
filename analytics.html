@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارشات و تحلیل - مبلمان دلژین</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <i class="fas fa-couch me-2"></i>
+                <span>مبلمان دلژین</span>
+            </div>
+            <button class="btn-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>داشبورد</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="customers.html" class="nav-link" data-page="customers">
+                    <i class="fas fa-users"></i>
+                    <span>مدیریت مشتریان</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="visits.html" class="nav-link" data-page="visits">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>ثبت بازدید</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="orders.html" class="nav-link" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>مدیریت سفارشات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="after-sales.html" class="nav-link" data-page="after-sales">
+                    <i class="fas fa-tools"></i>
+                    <span>خدمات پس از فروش</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="fabric-management.html" class="nav-link" data-page="fabric-management">
+                    <i class="fas fa-cut"></i>
+                    <span>مدیریت پارچه</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="production.html" class="nav-link" data-page="production">
+                    <i class="fas fa-industry"></i>
+                    <span>تولید</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="analytics.html" class="nav-link active" data-page="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>گزارشات و تحلیل</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="page-title">
+                    <h4 class="mb-0" id="pageTitle">گزارشات و تحلیل</h4>
+                </div>
+                <div class="header-actions">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-2"></i>
+                            مدیر سیستم
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>تنظیمات</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>خروج</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Analytics Page -->
+            <div id="analytics-page" class="page active">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5>گزارشات و تحلیل</h5>
+                        <p class="text-muted mb-0">بررسی و تحلیل داده‌های سیستم</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-xl-6">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h5>گزارش فروش بر اساس محصول</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="productSalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="chart-card">
+                            <div class="card-header">
+                                <h5>گزارش بازدید بر اساس روز هفته</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="visitsByDayChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>
