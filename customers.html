@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت مشتریان - مبلمان دلژین</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-logo">
+                <i class="fas fa-couch me-2"></i>
+                <span>مبلمان دلژین</span>
+            </div>
+            <button class="btn-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>داشبورد</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="customers.html" class="nav-link active" data-page="customers">
+                    <i class="fas fa-users"></i>
+                    <span>مدیریت مشتریان</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="visits.html" class="nav-link" data-page="visits">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>ثبت بازدید</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="orders.html" class="nav-link" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>مدیریت سفارشات</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="after-sales.html" class="nav-link" data-page="after-sales">
+                    <i class="fas fa-tools"></i>
+                    <span>خدمات پس از فروش</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="fabric-management.html" class="nav-link" data-page="fabric-management">
+                    <i class="fas fa-cut"></i>
+                    <span>مدیریت پارچه</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="production.html" class="nav-link" data-page="production">
+                    <i class="fas fa-industry"></i>
+                    <span>تولید</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="analytics.html" class="nav-link" data-page="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>گزارشات و تحلیل</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="page-title">
+                    <h4 class="mb-0" id="pageTitle">مدیریت مشتریان</h4>
+                </div>
+                <div class="header-actions">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-2"></i>
+                            مدیر سیستم
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>تنظیمات</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>خروج</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Customers Page -->
+            <div id="customers-page" class="page active">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5>مدیریت مشتریان</h5>
+                        <p class="text-muted mb-0">مدیریت اطلاعات مشتریان و پیگیری‌ها</p>
+                    </div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#customerModal">
+                        <i class="fas fa-plus me-2"></i>مشتری جدید
+                    </button>
+                </div>
+
+                <div class="table-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">لیست مشتریان</h6>
+                            <div class="d-flex gap-2">
+                                <div class="search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" class="form-control" placeholder="جستجو..." id="customerSearch">
+                                </div>
+                                <select class="form-select" id="customerGroupFilter">
+                                    <option value="">همه گروه‌ها</option>
+                                    <option value="vip">مشتریان ویژه</option>
+                                    <option value="regular">مشتریان عادی</option>
+                                    <option value="designer">دیزاینرها</option>
+                                    <option value="builder">سازندگان</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="customersTable">
+                                <thead>
+                                    <tr>
+                                        <th>نام و نام خانوادگی</th>
+                                        <th>شماره همراه</th>
+                                        <th>گروه عضویت</th>
+                                        <th>سطح</th>
+                                        <th>اعتبار خرید</th>
+                                        <th>آخرین تماس</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <div class="fw-bold">علی احمدی</div>
+                                                    <small class="text-muted">ali.ahmadi@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>۰۹۱۲۳۴۵۶۷۸۹</td>
+                                        <td><span class="badge bg-warning">مشتریان ویژه</span></td>
+                                        <td><span class="badge bg-success">طلایی</span></td>
+                                        <td>۵۰,۰۰۰,۰۰۰ تومان</td>
+                                        <td>۱۴۰۲/۰۸/۱۵</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary" title="مشاهده">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="ویرایش">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" title="پیگیری">
+                                                    <i class="fas fa-phone"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <div class="fw-bold">فاطمه موسوی</div>
+                                                    <small class="text-muted">f.mousavi@email.com</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>۰۹۸۷۶۵۴۳۲۱</td>
+                                        <td><span class="badge bg-primary">مشتریان</span></td>
+                                        <td><span class="badge bg-info">نقره‌ای</span></td>
+                                        <td>۲۰,۰۰۰,۰۰۰ تومان</td>
+                                        <td>۱۴۰۲/۰۸/۱۲</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary" title="مشاهده">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="ویرایش">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-info" title="پیگیری">
+                                                    <i class="fas fa-phone"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Customer Modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">مشتری جدید</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">جنسیت</label>
+                                <div class="form-check-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="customerGender" id="customerFemale" value="female">
+                                        <label class="form-check-label" for="customerFemale">زن</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="customerGender" id="customerMale" value="male">
+                                        <label class="form-check-label" for="customerMale">مرد</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <label class="form-label">نام</label>
+                                <input type="text" class="form-control" id="customerFirstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">نام خانوادگی</label>
+                                <input type="text" class="form-control" id="customerLastName" required>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <label class="form-label">شماره همراه</label>
+                                <input type="tel" class="form-control" id="customerPhone" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">ایمیل</label>
+                                <input type="email" class="form-control" id="customerEmail">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <label class="form-label">تاریخ تولد</label>
+                                <input type="date" class="form-control" id="customerBirthDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">کد ملی</label>
+                                <input type="text" class="form-control" id="customerNationalId">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <label class="form-label">عضویت در گروه</label>
+                                <select class="form-select" id="customerGroup" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="vip">مشتریان ویژه</option>
+                                    <option value="regular">مشتریان</option>
+                                    <option value="designer">دیزاینرها</option>
+                                    <option value="builder">سازندگان</option>
+                                    <option value="realtor">مشاوران املاک</option>
+                                    <option value="ambassador">سفیران برند</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">سطح انتخابی</label>
+                                <select class="form-select" id="customerLevel">
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="diamond">برلیان</option>
+                                    <option value="gold">گلد</option>
+                                    <option value="silver">سیلور</option>
+                                    <option value="platinum">پلاتین</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-3">
+                            <div class="col-12">
+                                <label class="form-label">آدرس محل سکونت</label>
+                                <textarea class="form-control" id="customerAddress" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                    <button type="button" class="btn btn-primary">ذخیره</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>
